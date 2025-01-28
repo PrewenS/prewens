@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrewenS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://media.discordapp.net/attachments/1226221862464393298/1333716610233536535/7b5016a40dce6c2ede2779dbf6ce6ed2.gif?ex=6799e7e3&is=67989663&hm=4700f0b2b28d8bcfc9936ea158e4184a12e3a28ceb87c2fbf9b3d34f4ed92959&');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(128, 128, 128, 0.353);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #5865F2;
+            font-size: 3rem;
+            font-weight: bold;
+            animation: fontChange 3s infinite alternate;
+        }
+
+        .description {
+            margin-bottom: 20px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .links li {
+            margin-bottom: 15px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 15px 20px;
+            border-radius: 30px;
+            background-color: #5865F2;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .links a:hover {
+            background-color: #7e32e2;
+            transform: scale(1.15);
+        }
+
+        @keyframes fontChange {
+            0% {
+                font-family: 'Arial', sans-serif;
+            }
+            25% {
+                font-family: 'Courier New', Courier, monospace;
+            }
+            50% {
+                font-family: 'Times New Roman', Times, serif;
+            }
+            75% {
+                font-family: 'Georgia', serif;
+            }
+            100% {
+                font-family: 'Verdana', sans-serif;
+            }
+        }
+
+        footer {
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="profile-image" src="https://media.discordapp.net/attachments/1226221862464393298/1333719294474850367/2a7e5e28e2327604dc7187f5f0a6f28d.png?ex=6799ea63&is=679898e3&hm=e1d409097c7dbac1469f02ebef2e24974e2cad30a3eb7c82d75c67d967282ce4&" alt="Profil Resminiz">
+
+        <h1>PrewenS</h1>
+        <p class="description">Merhaba, ben Emre. Hatay'da yaşıyorum.<br>Lise öğrencisiyim. Bazı linkler aşağıda!</p>
+
+        <ul class="links">
+            <li><a href="https://www.youtube.com/@prewens">Youtube</a></li>
+            <li><a href="https://www.instagram.com/buemre_?igsh=b2E2NXR4ZnRqcHdk">Instagram</a></li>
+            <li><a href="https://discord.com/users/1210645094181511232">Discord</a></li>
+            <li><a href="https://github.com/PrewenS">Github</a></li>
+        </ul>
+
+        <footer>
+            <p>Siteye uğradığınız için teşekkürler.</p>
+        </footer>
+    </div>
+</body>
+</html>
