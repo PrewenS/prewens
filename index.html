@@ -3,120 +3,494 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrewenS</title>
+    <title>Benim Profilim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('https://media.discordapp.net/attachments/1226221862464393298/1333716610233536535/7b5016a40dce6c2ede2779dbf6ce6ed2.gif?ex=6799e7e3&is=67989663&hm=4700f0b2b28d8bcfc9936ea158e4184a12e3a28ceb87c2fbf9b3d34f4ed92959&');
-            background-size: cover;
-            background-position: center;
+        :root {
+            --primary-color: #5865F2;
+            --primary-dark: #4752C4;
+            --primary-light: #7983F5;
+            --secondary-color: #A855F7;
+            --dark-color: #1E1F22;
+            --light-color: #F2F3F5;
+            --text-color: #2E3338;
+            --bg-color: #f9f9f9;
+            --card-bg: white;
+            --footer-bg: #f1f1f1;
+        }
+        
+        .dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --card-bg: #2d2d2d;
+            --footer-bg: #252525;
+            --dark-color: #f2f3f5;
+            --light-color: #1E1F22;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s ease, color 0.2s ease;
         }
-
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
         .container {
-            background-color: rgba(128, 128, 128, 0.353);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-
-        .profile-image {
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            padding-top: 10px;
+        }
+        
+        .subtitle {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+        
+        .profile-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        
+        .profile-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.15);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .profile-img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
+            border: 5px solid var(--primary-light);
+            margin: 0 auto 20px;
+            display: block;
+        }
+        
+        .profile-name {
+            color: var(--primary-light);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .profile-title {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
             margin-bottom: 20px;
+            font-weight: 500;
         }
-
-        h1 {
-            color: #5865F2;
-            font-size: 3rem;
-            font-weight: bold;
-            animation: fontChange 3s infinite alternate;
+        
+        .profile-bio {
+            margin-bottom: 25px;
+            color: var(--text-color);
+            opacity: 0.9;
         }
-
-        .description {
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+        
+        .about-card {
+            flex: 2;
+            min-width: 300px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.15);
+            padding: 30px;
+        }
+        
+        .section-title {
+            color: var(--primary-light);
+            font-size: 1.8rem;
             margin-bottom: 20px;
-            color: #fff;
-            font-weight: bold;
+            position: relative;
+            padding-bottom: 10px;
         }
-
-        .links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
         }
-
-        .links li {
+        
+        .skills {
+            margin-top: 30px;
+        }
+        
+        .skill-item {
             margin-bottom: 15px;
         }
-
-        .links a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            padding: 15px 20px;
-            border-radius: 30px;
-            background-color: #5865F2;
-            display: inline-block;
-            transition: transform 0.3s ease;
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
         }
-
-        .links a:hover {
-            background-color: #7e32e2;
-            transform: scale(1.15);
+        
+        .skill-bar {
+            height: 10px;
+            background: #444;
+            border-radius: 5px;
+            overflow: hidden;
         }
-
-        @keyframes fontChange {
-            0% {
-                font-family: 'Arial', sans-serif;
-            }
-            25% {
-                font-family: 'Courier New', Courier, monospace;
-            }
-            50% {
-                font-family: 'Times New Roman', Times, serif;
-            }
-            75% {
-                font-family: 'Georgia', serif;
-            }
-            100% {
-                font-family: 'Verdana', sans-serif;
-            }
+        
+        .dark-mode .skill-bar {
+            background: #555;
         }
-
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+        }
+        
+        .contact-info {
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
         footer {
-            font-weight: bold;
             text-align: center;
-            padding: 10px;
-            color: #fff;
+            padding: 20px;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            background-color: var(--footer-bg);
+            border-radius: 10px;
+        }
+        
+        /* Gece/Gündüz Mod Butonu - Sağa taşındı */
+        .theme-toggle {
+            position: absolute;
+            top: 0;
+            right: 60px; /* Ana menü butonu için yer açtık */
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .theme-toggle:hover {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        .dark-mode .theme-toggle .fa-sun {
+            display: none;
+        }
+        
+        .dark-mode .theme-toggle .fa-moon {
+            display: block;
+        }
+        
+        .theme-toggle .fa-sun {
+            display: block;
+        }
+        
+        .theme-toggle .fa-moon {
+            display: none;
+        }
+        
+        /* Ana Menü Butonu - Sağ Üst Köşe */
+        .home-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .home-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(88, 101, 242, 0.4);
+        }
+        
+        /* Dizi Listem Butonu */
+        .dizi-btn {
+            position: absolute;
+            top: 0;
+            right: 120px; /* Diğer butonlar için yer bıraktık */
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .dizi-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(88, 101, 242, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .profile-card, .about-card {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .theme-toggle {
+                right: 50px;
+            }
+            
+            .dizi-btn {
+                right: 100px;
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .home-btn {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
-<body>
+<body class="dark-mode">
     <div class="container">
-        <img class="profile-image" src="https://media.discordapp.net/attachments/1226221862464393298/1333719294474850367/2a7e5e28e2327604dc7187f5f0a6f28d.png?ex=6799ea63&is=679898e3&hm=e1d409097c7dbac1469f02ebef2e24974e2cad30a3eb7c82d75c67d967282ce4&" alt="Profil Resminiz">
-
-        <h1>PrewenS</h1>
-        <p class="description">Merhaba, ben Emre. Hatay'da yaşıyorum.<br>Lise öğrencisiyim. Bazı linkler aşağıda!</p>
-
-        <ul class="links">
-            <li><a href="https://www.youtube.com/@prewens">Youtube</a></li>
-            <li><a href="https://www.instagram.com/buemre_?igsh=b2E2NXR4ZnRqcHdk">Instagram</a></li>
-            <li><a href="https://discord.com/users/1210645094181511232">Discord</a></li>
-            <li><a href="https://github.com/PrewenS">Github</a></li>
-        </ul>
-
+        <header>
+            <!-- Dizi Listem Butonu -->
+            <a href="diziler.html" class="dizi-btn">
+                <i class="fas fa-tv"></i>
+                Dizi Listem
+            </a>
+            
+            <!-- Gece/Gündüz Mod Butonu -->
+            <button class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <!-- Ana Menü Butonu -->
+            <a href="index.html" class="home-btn">
+                <i class="fas fa-home"></i>
+                Ana Menü
+            </a>
+            
+            <h1>Kişisel Web Sitem</h1>
+            <p class="subtitle">Profesyonel portfolyo ve kişisel blog</p>
+        </header>
+        
+        <main>
+            <section class="profile-section">
+                <div class="profile-card">
+                    <img src="https://via.placeholder.com/150" alt="Profil Resmi" class="profile-img">
+                    <h2 class="profile-name">Benim Adım</h2>
+                    <p class="profile-title">Web Geliştirici / Tasarımcı</p>
+                    <p class="profile-bio">Merhaba! Ben [Adınız]. Web geliştirme ve tasarım konusunda tutkulu bir profesyonelim.</p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="about-card">
+                    <h2 class="section-title">Hakkımda</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+                    <p>Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+                    
+                    <div class="skills">
+                        <h3 class="section-title">Yeteneklerim</h3>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>HTML/CSS</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>JavaScript</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>UI/UX Tasarım</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <h3 class="section-title">İletişim Bilgileri</h3>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <span>email@example.com</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <span>+90 555 555 55 55</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <span>İstanbul, Türkiye</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
         <footer>
-            <p>Siteye uğradığınız için teşekkürler.</p>
+            <p>&copy; 2023 Tüm Hakları Saklıdır. Benim Adım</p>
         </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const body = document.body;
+            
+            // Kullanıcının tercihini kontrol et (localStorage)
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme) {
+                body.classList.toggle('dark-mode', currentTheme === 'dark');
+            }
+            
+            // Buton tıklama olayı
+            themeToggle.addEventListener('click', function() {
+                body.classList.toggle('dark-mode');
+                
+                // Temayı localStorage'a kaydet
+                const isDark = body.classList.contains('dark-mode');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        });
+    </script>
 </body>
-</html>
+    </html>
