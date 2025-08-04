@@ -235,11 +235,11 @@
             border-radius: 10px;
         }
         
-        /* Gece/Gündüz Mod Butonu - Sağa taşındı */
+        /* Tema değiştirme butonu */
         .theme-toggle {
             position: absolute;
             top: 0;
-            right: 60px; /* Ana menü butonu için yer açtık */
+            right: 40px;
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -276,54 +276,61 @@
             display: none;
         }
         
-        /* Ana Menü Butonu - Sağ Üst Köşe */
-        .home-btn {
+        /* 3 nokta menü stil */
+        .menu-container {
             position: absolute;
             top: 0;
             right: 0;
-            background: var(--primary-color);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 30px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+            z-index: 1000;
+        }
+        
+        .menu-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px 12px;
             transition: all 0.3s ease;
-            z-index: 100;
         }
         
-        .home-btn:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(88, 101, 242, 0.4);
+        .menu-btn:hover {
+            color: var(--primary-color);
         }
         
-        /* Dizi Listem Butonu */
-        .dizi-btn {
+        .dropdown-menu {
+            display: none;
             position: absolute;
-            top: 0;
-            right: 120px; /* Diğer butonlar için yer bıraktık */
-            background: var(--primary-color);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 30px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
-            transition: all 0.3s ease;
-            z-index: 100;
+            right: 0;
+            background-color: var(--card-bg);
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            z-index: 1;
+            overflow: hidden;
         }
         
-        .dizi-btn:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(88, 101, 242, 0.4);
+        .dropdown-menu a {
+            color: var(--text-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s;
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+        
+        .dropdown-menu a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .show {
+            display: block;
         }
         
         @media (max-width: 768px) {
@@ -344,41 +351,24 @@
             .theme-toggle {
                 right: 50px;
             }
-            
-            .dizi-btn {
-                right: 100px;
-                padding: 6px 12px;
-                font-size: 0.9rem;
-            }
-            
-            .home-btn {
-                padding: 6px 12px;
-                font-size: 0.9rem;
-            }
         }
     </style>
 </head>
 <body class="dark-mode">
     <div class="container">
         <header>
-            <!-- Dizi Listem Butonu -->
-            <a href="diziler.html" class="dizi-btn">
-                <i class="fas fa-tv"></i>
-                Dizi Listem
-            </a>
+            <!-- 3 nokta menü (sadece Dizi Listesi) -->
+            <div class="menu-container">
+                <button class="menu-btn" onclick="toggleMenu()"><i class="fas fa-ellipsis-v"></i></button>
+                <div id="dropdownMenu" class="dropdown-menu">
+                    <a href="diziler.html"><i class="fas fa-list"></i> Dizi Listesi</a>
+                </div>
+            </div>
             
-            <!-- Gece/Gündüz Mod Butonu -->
             <button class="theme-toggle" aria-label="Toggle theme">
                 <i class="fas fa-sun"></i>
                 <i class="fas fa-moon"></i>
             </button>
-            
-            <!-- Ana Menü Butonu -->
-            <a href="index.html" class="home-btn">
-                <i class="fas fa-home"></i>
-                Ana Menü
-            </a>
-            
             <h1>Kişisel Web Sitem</h1>
             <p class="subtitle">Profesyonel portfolyo ve kişisel blog</p>
         </header>
@@ -386,23 +376,23 @@
         <main>
             <section class="profile-section">
                 <div class="profile-card">
-                    <img src="https://via.placeholder.com/150" alt="Profil Resmi" class="profile-img">
-                    <h2 class="profile-name">Benim Adım</h2>
+                    <img src="https://cdn.glitch.global/d36b3dbc-f154-4e80-86f1-a7cf10d4f1c3/pp.png?v=1738159377888" alt="Profil Resmi" class="profile-img">
+                    <h2 class="profile-name">PrewenS</h2>
                     <p class="profile-title">Web Geliştirici / Tasarımcı</p>
-                    <p class="profile-bio">Merhaba! Ben [Adınız]. Web geliştirme ve tasarım konusunda tutkulu bir profesyonelim.</p>
+                    <p class="profile-bio">Merhaba! Ben Emre. Web geliştirme ve tasarımla uğraşan biriyim.</p>
                     
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href= "https://discord.com/users/1210645094181511232" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="https://github.com/PrewenS" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="https://www.youtube.com/@prewens" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/buemre_?igsh=b2E2NXR4ZnRqcHdk" class="social-link"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 
                 <div class="about-card">
                     <h2 class="section-title">Hakkımda</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
-                    <p>Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+                    <p>Ben Emre, 15 yaşındayım ve Hatay'da yaşıyorum.</p>
+                    <p>Hobi olarak boş zamanlarımda dizi ve film izlerim. Kendi çapımda kodlama yapıp öğreniyorum</p>
                     
                     <div class="skills">
                         <h3 class="section-title">Yeteneklerim</h3>
@@ -410,30 +400,30 @@
                         <div class="skill-item">
                             <div class="skill-name">
                                 <span>HTML/CSS</span>
-                                <span>90%</span>
+                                <span>70%</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%;"></div>
+                                <div class="skill-progress" style="width: 70%;"></div>
                             </div>
                         </div>
                         
                         <div class="skill-item">
                             <div class="skill-name">
                                 <span>JavaScript</span>
-                                <span>80%</span>
+                                <span>50%</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%;"></div>
+                                <div class="skill-progress" style="width: 50%;"></div>
                             </div>
                         </div>
                         
                         <div class="skill-item">
                             <div class="skill-name">
                                 <span>UI/UX Tasarım</span>
-                                <span>75%</span>
+                                <span>85%</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 75%;"></div>
+                                <div class="skill-progress" style="width: 85%;"></div>
                             </div>
                         </div>
                     </div>
@@ -445,21 +435,21 @@
                             <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <span>email@example.com</span>
+                            <span>prewensinc@gmail.com</span>
                         </div>
                         
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-phone"></i>
                             </div>
-                            <span>+90 555 555 55 55</span>
+                            <span>+90 000 000 00 00</span>
                         </div>
                         
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <span>İstanbul, Türkiye</span>
+                            <span>Hatay, Türkiye</span>
                         </div>
                     </div>
                 </div>
@@ -467,8 +457,14 @@
         </main>
         
         <footer>
-            <p>&copy; 2023 Tüm Hakları Saklıdır. Benim Adım</p>
+            <p>&copy; 2025 Tüm Hakları Saklıdır. PrewenS</p>
         </footer>
+      <style>
+      body {
+  touch-action: pan-y; /* Sadece dikey kaydırmaya izin verir, yakınlaştırmayı engeller */
+  overflow-x: hidden; /* Yatay kaydırmayı engeller */
+}
+        </style>
     </div>
 
     <script>
@@ -482,15 +478,31 @@
                 body.classList.toggle('dark-mode', currentTheme === 'dark');
             }
             
-            // Buton tıklama olayı
+            // Tema değiştirme butonu
             themeToggle.addEventListener('click', function() {
                 body.classList.toggle('dark-mode');
-                
-                // Temayı localStorage'a kaydet
                 const isDark = body.classList.contains('dark-mode');
                 localStorage.setItem('theme', isDark ? 'dark' : 'light');
             });
         });
+        
+        // Menü toggle fonksiyonu
+        function toggleMenu() {
+            document.getElementById("dropdownMenu").classList.toggle("show");
+        }
+        
+        // Menü dışına tıklandığında kapat
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu-btn') && !event.target.matches('.menu-btn *')) {
+                var dropdowns = document.getElementsByClassName("dropdown-menu");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
     </script>
 </body>
-    </html>
+</html>
